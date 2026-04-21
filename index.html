@@ -22,7 +22,7 @@
 <body class="min-h-screen bg-gradient-to-br from-stone-100 via-white to-amber-50 text-stone-900 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950 dark:text-stone-100">
   <!-- Navbar -->
   <header class="sticky top-0 z-40 border-b border-white/20 bg-white/70 backdrop-blur-xl dark:border-stone-800/60 dark:bg-stone-950/70">
-    <nav>
+    <nav aria-label="Primary">
       <div class="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 sm:px-6">
         <a href="#hero" class="flex items-center gap-3 transition hover:opacity-90">
           <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 text-white shadow-xl">
@@ -359,7 +359,7 @@
         <p class="text-xs text-stone-400 dark:text-stone-500">© <span id="year"></span> Restaurant App Inc. All rights reserved.</p>
       </div>
       <div class="flex flex-col gap-4 sm:items-end">
-        <div class="flex gap-5 text-xs text-stone-500"><a href="components-showcase.html" class="hover:text-stone-900 dark:hover:text-stone-50">Components</a><a href="#" class="hover:text-stone-900 dark:hover:text-stone-50">Company</a><a href="#" class="hover:text-stone-900 dark:hover:text-stone-50">Blog</a><a href="#" class="hover:text-stone-900 dark:hover:text-stone-50">Docs</a><a href="#" class="hover:text-stone-900 dark:hover:text-stone-50">Support</a></div>
+        <div class="flex flex-wrap gap-5 text-xs text-stone-500"><a href="components-showcase.html" class="hover:text-stone-900 dark:hover:text-stone-50">Components</a><a href="#features" class="hover:text-stone-900 dark:hover:text-stone-50">Highlights</a><a href="#menu" class="hover:text-stone-900 dark:hover:text-stone-50">Menu</a><a href="#final-cta" class="hover:text-stone-900 dark:hover:text-stone-50">Reservations</a><a href="#services" class="hover:text-stone-900 dark:hover:text-stone-50">Support</a></div>
       </div>
     </div>
   </footer>
@@ -422,27 +422,6 @@
       dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index, 10)));
     });
     setInterval(() => goTo(activeIndex + 1), 6000);
-  }
-  function initShowcaseSlider() {
-    const slides = document.querySelectorAll('.showcase-slide');
-    const dots = document.querySelectorAll('.showcase-dot');
-    if (!slides.length) return;
-    let idx = 0;
-    function go(n) {
-      idx = (n + slides.length) % slides.length;
-      slides.forEach((s, i) => {
-        s.classList.toggle('opacity-100', i === idx);
-        s.classList.toggle('opacity-0', i !== idx);
-      });
-      dots.forEach((d, i) => {
-        d.classList.toggle('w-5', i === idx);
-        d.classList.toggle('w-2', i !== idx);
-        d.classList.toggle('bg-amber-400', i === idx);
-        d.classList.toggle('bg-white/60', i !== idx);
-      });
-    }
-    dots.forEach((d) => d.addEventListener('click', () => go(parseInt(d.dataset.index))));
-    setInterval(() => go(idx + 1), 5000);
   }
   function initFaq() {
     document.querySelectorAll('.faq-item').forEach((item) => {
@@ -517,7 +496,6 @@
   initTheme();
   initMobileMenu();
   initHeroSlider();
-  initShowcaseSlider();
   initFaq();
   initToggles();
   initYear();
